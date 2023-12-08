@@ -32,3 +32,7 @@ Types:
 
 # Syntax
 let variableName: datatype = value;
+
+# To create tsconfig.json file
+tsc --init
+tsc -W (watch mode -- keep watching ts files)
