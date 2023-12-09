@@ -16,8 +16,9 @@ class User {
   constructor(
     public name: string,
     public email: string,
-    private id: number,
-    readonly googleId: number
+    private id: number, // we can't access it from out side of the class and inherit it
+    protected _AddressName: string, // protected can be inherit but can't use outside class
+    readonly googleId: number,
   ) {
     this.email = email;
     this.name = name;
@@ -26,6 +27,10 @@ class User {
   
 }
 
+class address extends User {
+  changeAddress() {
+    this._AddressName = 'ADA'
+  }
+}
 
-
-const person = new User('ashish', 'a@a.com', 334, 987);
+const person = new User('ashish', 'a@a.com', 334, 'delhi', 987);
