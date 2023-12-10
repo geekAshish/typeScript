@@ -1,5 +1,12 @@
 "use strict";
 console.log('Ashish Kushwaha is good boy');
+// Best practices
+function bestPractices1(val) {
+    if (!val) {
+        console.log(val, 'the value is null');
+    }
+}
+bestPractices1('');
 function createUserProfile(a, b) {
     return {
         a,

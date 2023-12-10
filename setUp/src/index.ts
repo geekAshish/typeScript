@@ -1,5 +1,17 @@
 console.log('Ashish Kushwaha is good boy');
 
+// Best practices
+function bestPractices1(val: string | null) {
+  if(!val) {
+    console.log(val, 'the value is null');
+    
+  }
+}
+
+bestPractices1('')
+
+//
+
 interface UserProfile {
   username: string
   password: string
