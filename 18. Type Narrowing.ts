@@ -29,3 +29,29 @@ function bestPractices(val: string | null) {
 
 bestPractices('ashish')
 
+
+
+
+// The "in" operator narrowing
+interface User {
+  name: string,
+  email: string
+}
+
+interface Admin {
+  name: string,
+  email: string,
+  isAdmin: boolean
+}
+
+function isAdminAccount(data: User | Admin) {
+  if ('IsAdmin' in data) {
+    console.log(`This user is Admin`);
+    return data.IsAdmin;
+  }
+  
+  else return false;
+}
+
+
+
