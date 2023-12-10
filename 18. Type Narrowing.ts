@@ -1,8 +1,8 @@
 // https://www.typescriptlang.org/docs/handbook/2/narrowing.html
 
 // Best Practices for writing typescript
-// Always check which typeof variable is coming of
 
+// 1. Always check which typeof variable is coming of
 function checking(val: number | string) {
   if(typeof val === "number") {
     // perform some logic
@@ -15,8 +15,7 @@ function checking(val: number | string) {
 
 
 
-// You should be writing like that because it could be null
-
+// 2. You should be writing like that because it could be null, null check
 function bestPractices(val: string | null) {
   if(!val) {
     console.log(val, 'the value is null');
@@ -32,7 +31,7 @@ bestPractices('ashish')
 
 
 
-// The "in" operator narrowing
+// 3. The "in" operator narrowing
 interface User {
   name: string,
   email: string
@@ -53,5 +52,41 @@ function isAdminAccount(data: User | Admin) {
   else return false;
 }
 
+
+
+// 4. instanceof and Type Predicates
+// https://www.typescriptlang.org/docs/handbook/2/narrowing.html#instanceof-narrowing
+
+// Value which is constructed with new keyword, like
+// new Date(), new Array()
+
+function logValue(value: string | Date) {
+  if(value instanceof Date) {
+    console.log(value.toUTCString());
+  } else {
+    console.log(value.toUpperCase());
+  }
+}
+
+
+// 5. Using type Predicates
+// https://www.typescriptlang.org/docs/handbook/2/narrowing.html#using-type-predicates
+
+type Fish = {swim: () => void}
+type Bird = {fly(): void}
+
+// Now here if the function returns true, it's Fish, so we are defining, (pet is Fish)
+function isFish(pet: Fish | Bird): pet is Fish {
+  return (pet as Fish).swim !== undefined;
+}
+
+function getFood(pet: Fish | Bird) {
+  if(isFish(pet)) {
+    pet
+    return 'Fish Food';
+  } else {
+    return 'Bird Food';
+  }
+}
 
 
