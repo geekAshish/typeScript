@@ -37,7 +37,7 @@ createHouse<Building>({
 // })
 
 
-
+// 2.
 // Taking array as a parameter
 // This means taking an array type T[], and returning the one of the value of it type T
 function getArray<T>(value: T[]): T {
@@ -51,4 +51,64 @@ function getArray<T>(value: T[]): T {
 const getDataFromDataBase = <A> (data: Array<A>): A => {
   return data[0];
 }
+
+
+
+// 3. Generic Classes
+// https://www.typescriptlang.org/docs/handbook/2/generics.html#using-type-parameters-in-generic-constraints
+
+
+interface UserDataBase {
+  connection: string,
+  username: string,
+  password: string,
+}
+
+function connectUserWithDataBase<T, U extends UserDataBase>(valueA: T, valueB: U): Object {
+  return {
+    valueA,
+    valueB
+  }
+}
+
+connectUserWithDataBase("Ashish", {connection: 'db', username: "teenAgeMonk", password: 'bkd'})
+
+
+
+
+//
+
+interface Quiz {
+  name: string
+  question: string
+}
+
+interface Course {
+  name: string
+  author: string
+  duration: number
+}
+
+// Generic class handles the common case of the Quiz and Course
+class EnrolledUser<T extends Quiz, U extends Course> {
+  public Quiz: Array<T> = []
+  public Course: Array<U> = []
+
+  getAllQuiz(product: T) {
+    this.Quiz.push(product)
+  }
+  getAllCourse(product: U) {
+    this.Course.push(product)
+  }
+}
+
+const userOne = new EnrolledUser()
+
+userOne.getAllQuiz({name: 'ashish', question: 'q1'});
+userOne.getAllCourse({name: 'ashish', author: 'ashish', duration: 9});
+
+console.log(userOne.Course);
+console.log(userOne.Quiz);
+
+
 
