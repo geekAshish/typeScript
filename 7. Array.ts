@@ -36,3 +36,26 @@ const myWebsite: ReadonlyArray<string> = ['ashish'];
 
 // myWebsite.push() can't manipulate data
 console.log(myWebsite[0])
+
+
+
+// Array Of Object ########################################################################
+interface personInformation {
+  FirstName: string,
+  dob: number,
+  isMarried: boolean
+}
+let personInformation: personInformation[];
+
+personInformation = [
+  {
+    FirstName: 'Ashish',
+    dob: 4,
+    isMarried: false
+  },
+  {
+    FirstName: 'Aman',
+    dob: 5,
+    isMarried: false
+  }
+]
